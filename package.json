@@ -1,6 +1,6 @@
 {
   "name": "my-testblocks-project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TestBlocks test automation project",
   "scripts": {
     "test": "testblocks run tests/**/*.testblocks.json",
