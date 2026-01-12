@@ -1,0 +1,58 @@
+{
+  "name": "login",
+  "description": "Login to the application with email and password",
+  "category": "Auth",
+  "color": "#4CAF50",
+  "params": [
+    {
+      "name": "email",
+      "type": "string",
+      "description": "User email address"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "description": "User password"
+    }
+  ],
+  "steps": [
+    {
+      "id": "login-step-1",
+      "type": "web_navigate",
+      "params": {
+        "URL": "${baseUrl}/#/auth/login"
+      }
+    },
+    {
+      "id": "login-step-2",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=email]",
+        "VALUE": "${snippet_email}"
+      }
+    },
+    {
+      "id": "login-step-3",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=password]",
+        "VALUE": "${snippet_password}"
+      }
+    },
+    {
+      "id": "login-step-4",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=login-submit]"
+      }
+    },
+    {
+      "id": "login-step-5",
+      "type": "web_wait_for_selector",
+      "params": {
+        "SELECTOR": "[data-test=nav-menu]",
+        "TIMEOUT": 10000
+      }
+    }
+  ]
+}

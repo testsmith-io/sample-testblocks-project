@@ -1,0 +1,132 @@
+{
+  "version": "1.0.0",
+  "name": "Data-Driven Login Tests",
+  "description": "Demonstrates data-driven testing with multiple user credentials and expected results",
+  "variables": {
+    "testRunId": {
+      "type": "string",
+      "default": "",
+      "description": "Unique identifier for this test run"
+    }
+  },
+  "plugins": [
+    "faker-plugin"
+  ],
+  "beforeEach": [
+    {
+      "id": "before-1",
+      "type": "faker_store_value",
+      "params": {
+        "VARIABLE": "testRunId",
+        "TYPE": "uuid"
+      }
+    },
+    {
+      "id": "before-2",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "Starting test iteration - Run ID: ${testRunId}"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "test-login-multiple-users",
+      "name": "Login with Multiple User Roles",
+      "description": "Test login with different user accounts and verify the expected page title",
+      "tags": [
+        "web",
+        "login",
+        "data-driven"
+      ],
+      "data": [
+        {
+          "name": "Row 1",
+          "values": {
+            "email": "customer@practicesoftwaretesting.com",
+            "password": "welcome01",
+            "expected_result": "My account"
+          }
+        },
+        {
+          "name": "Row 2",
+          "values": {
+            "email": "admin@practicesoftwaretesting.com",
+            "password": "welcome01",
+            "expected_result": "Sales over the years"
+          }
+        }
+      ],
+      "steps": [
+        {
+          "id": "`I+E8$BIB+IKk}R}9i~l",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": ".8f-RlL8sK/+*Sx[{x-;",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-in\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "l%-!?0G*1V1_4%Is;q|Z",
+          "type": "custom_performlogin",
+          "params": {
+            "EMAIL": "${email}",
+            "PASSWORD": "${password}"
+          }
+        },
+        {
+          "id": "ZtMvUwv,9xRh:.a{a.y2",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "${expected_result}",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "data-driven",
+      "multi-role",
+      "login",
+      "procedures",
+      "beforeEach"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "credentials"
+    ]
+  },
+  "afterEach": [
+    {
+      "id": "{ZSMs[sQa]vXZgqKwzDh",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "QMTa/R!1g,-yV*!SI-rk",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-out\"]",
+        "TIMEOUT": 30000
+      }
+    }
+  ]
+}

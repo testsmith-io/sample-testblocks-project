@@ -1,0 +1,378 @@
+{
+  "version": "1.0.0",
+  "name": "Contact Form Tests",
+  "description": "Demonstrates form filling with Faker plugin for random data generation",
+  "variables": {
+    "firstName": {
+      "type": "string",
+      "default": "",
+      "description": "Generated first name"
+    },
+    "lastName": {
+      "type": "string",
+      "default": "",
+      "description": "Generated last name"
+    },
+    "email": {
+      "type": "string",
+      "default": "",
+      "description": "Generated email address"
+    },
+    "message": {
+      "type": "string",
+      "default": "",
+      "description": "Generated message content"
+    }
+  },
+  "plugins": [
+    "faker-plugin"
+  ],
+  "procedures": {
+    "fillContactForm": {
+      "name": "fillContactForm",
+      "description": "Fill the contact form with provided values",
+      "params": [
+        {
+          "name": "fname",
+          "type": "string",
+          "default": "",
+          "description": "First name"
+        },
+        {
+          "name": "lname",
+          "type": "string",
+          "default": "",
+          "description": "Last name"
+        },
+        {
+          "name": "emailAddr",
+          "type": "string",
+          "default": "",
+          "description": "Email address"
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "default": "return",
+          "description": "Subject selection"
+        },
+        {
+          "name": "msg",
+          "type": "string",
+          "default": "",
+          "description": "Message content"
+        }
+      ],
+      "steps": [
+        {
+          "id": "fill-1",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"first-name\"]",
+            "VALUE": "${fname}"
+          }
+        },
+        {
+          "id": "fill-2",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name\"]",
+            "VALUE": "${lname}"
+          }
+        },
+        {
+          "id": "fill-3",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${emailAddr}"
+          }
+        },
+        {
+          "id": "fill-4",
+          "type": "web_select",
+          "params": {
+            "SELECTOR": "[data-test=\"subject\"]",
+            "VALUE": "${subject}"
+          }
+        },
+        {
+          "id": "fill-5",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"message\"]",
+            "VALUE": "${msg}"
+          }
+        }
+      ]
+    }
+  },
+  "tests": [
+    {
+      "id": "test-contact-form-submission",
+      "name": "Submit Contact Form with Generated Data",
+      "description": "Fill and submit the contact form using Faker-generated data",
+      "tags": [
+        "web",
+        "form",
+        "faker",
+        "contact"
+      ],
+      "steps": [
+        {
+          "id": "}^f7KR3Z7s,m%])%35Em",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "HK!{YAS0]8`~pE1A5]}c",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-contact\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "+S4fPy:GaMJxt37?G6)J",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "firstName",
+            "TYPE": "firstName"
+          }
+        },
+        {
+          "id": "g{Oxw5%+iP{|E:d[L3C-",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "lastName",
+            "TYPE": "lastName"
+          }
+        },
+        {
+          "id": "/b4nKrDc2mq+gH%Sua=N",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "email",
+            "TYPE": "email"
+          }
+        },
+        {
+          "id": "4jgWa@=t-~=/$@7!E,WL",
+          "type": "procedure_call",
+          "params": {
+            "NAME": "fillContactForm",
+            "ARGS": "{\"fname\": \"${firstName}\", \"lname\": \"${lastName}\", \"emailAddr\": \"${email}\", \"subject\": \"return\", \"msg\": \"This is a pretty long message, what else should I write here?\"}"
+          }
+        },
+        {
+          "id": "xWO;a-5/V8yQ8hnNt_%U",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"contact-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "+7fkDNGx7qlc{H9Qyo|h",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": ".alert-success",
+            "TEXT": "Thanks for your message! We will contact you shortly.",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-contact-form-validation",
+      "name": "Contact Form Validation",
+      "description": "Verify form validation with empty and invalid inputs",
+      "tags": [
+        "web",
+        "form",
+        "validation",
+        "negative"
+      ],
+      "softAssertions": true,
+      "steps": [
+        {
+          "id": "DgclK$zsmK|*8eG/hGDX",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "mNCBejAVyr-}(:HCe4!{",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-contact\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "Sw/KPR:_S(_RoR,/)qLp",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"contact-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "N]D+_WASn:rN/jsZSg@!",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"first-name-error\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "6-cv8sWijB4nIinD^X.u",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name-error\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "ej@{r*nNeiK}/(6pZJNM",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"email-error\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "ad!jEJ,bq-C-oMl/?u)u",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"message-error\"]",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-contact-form-with-person-data",
+      "name": "Submit Form with Full Person Data",
+      "description": "Use faker_store_person to generate complete person data",
+      "tags": [
+        "web",
+        "form",
+        "faker",
+        "person"
+      ],
+      "steps": [
+        {
+          "id": "04GxZyB`=1c]a2T4^F=)",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "b5Un~.$u3Y=x({GnbORy",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-contact\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "F6wWjOU%.Vn4,$_AwT21",
+          "type": "faker_store_person",
+          "params": {
+            "VARIABLE": "person"
+          }
+        },
+        {
+          "id": "}aRwu_BsH3;TU};2.O;8",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"first-name\"]",
+            "VALUE": "${person.firstName}"
+          }
+        },
+        {
+          "id": "x?Q:$DBNlAQr{h*3}?wB",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name\"]",
+            "VALUE": "${person.lastName}"
+          }
+        },
+        {
+          "id": "%jUr-/tb`!L!u05y/5VA",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${person.email}"
+          }
+        },
+        {
+          "id": "S7a.e%_ZCEj~yQW=](2v",
+          "type": "web_select",
+          "params": {
+            "SELECTOR": "[data-test=\"subject\"]",
+            "VALUE": "customer-service"
+          }
+        },
+        {
+          "id": "8rJVlO%payScIA2q7sJI",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "messageText",
+            "TYPE": "paragraph"
+          }
+        },
+        {
+          "id": "1NLe}8GCU[dH+m^CtESw",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"message\"]",
+            "VALUE": "${messageText}"
+          }
+        },
+        {
+          "id": "j-i8+*L]rbkYoGc87M7c",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"contact-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "WImh2kpJp:Q0JA:dQWbd",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": ".alert-success",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "faker",
+      "form-filling",
+      "procedures",
+      "soft-assertions",
+      "validation"
+    ],
+    "usesGlobals": [
+      "baseUrl"
+    ],
+    "notes": "This test requires the Faker plugin to be enabled"
+  }
+}

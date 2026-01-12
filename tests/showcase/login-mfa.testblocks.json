@@ -1,0 +1,460 @@
+{
+  "version": "1.0.0",
+  "name": "MFA Login Tests",
+  "description": "Demonstrates Multi-Factor Authentication login flow with TOTP generation",
+  "variables": {
+    "totpSecret": {
+      "type": "string",
+      "default": "",
+      "description": "TOTP secret extracted during setup"
+    },
+    "adminToken": {
+      "type": "string",
+      "default": "",
+      "description": "Admin access token for cleanup"
+    },
+    "userId": {
+      "type": "string",
+      "default": "",
+      "description": "User ID for MFA reset"
+    }
+  },
+  "plugins": [
+    "totp-plugin"
+  ],
+  "procedures": {
+    "loginWithCredentials": {
+      "name": "loginWithCredentials",
+      "description": "Login with email and password",
+      "params": [
+        {
+          "name": "email",
+          "type": "string",
+          "default": "",
+          "description": "From .EMAIL"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "default": "",
+          "description": "From .PASSWORD"
+        }
+      ],
+      "steps": [
+        {
+          "id": "login-1",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${email}"
+          }
+        },
+        {
+          "id": "login-2",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"password\"]",
+            "VALUE": "${password}"
+          }
+        },
+        {
+          "id": "login-3",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"login-submit\"]",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    }
+  },
+  "beforeAll": [
+    {
+      "id": "]X)d}o6bfP4We41GEI`f",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== MFA Setup: Enabling MFA for ${credentials.customer2.email} ==="
+      }
+    },
+    {
+      "id": "~hH,eI3P+tLDyrw0Z;]N",
+      "type": "web_navigate",
+      "params": {
+        "URL": "${baseUrl}",
+        "WAIT_UNTIL": "load"
+      }
+    },
+    {
+      "id": "uPkxq[5LeJwEDEJPd(Sz",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-in\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "myQwde~#Z6Y56MDn%t+N",
+      "type": "custom_loginwithcredentials",
+      "params": {
+        "EMAIL": "customer2@practicesoftwaretesting.com",
+        "PASSWORD": "welcome01"
+      }
+    },
+    {
+      "id": "0Vn%O~$V_#`~RSF`rr#!",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "N?l-6hCRIn2rT}tZ(!6l",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-my-profile\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "z^xEX#HFx+W0G/$02(Xm",
+      "type": "web_wait_for_element",
+      "params": {
+        "SELECTOR": "[data-test=\"totp-secret\"]",
+        "STATE": "visible",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "nX^:V~x){}sro9*/@UQ8",
+      "type": "logic_set_variable",
+      "params": {
+        "NAME": "totpSecret",
+        "VALUE": {
+          "id": "ynI;ggj*RG$Fy$adURKk",
+          "type": "web_get_text",
+          "params": {
+            "SELECTOR": "[data-test=\"totp-secret\"]"
+          }
+        }
+      }
+    },
+    {
+      "id": "BuM,y5s$v`r18-;cyJV*",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "TOTP Secret extracted: ${totpSecret}"
+      }
+    },
+    {
+      "id": "Oht/u`SmE-1rwr#Bu!{j",
+      "type": "totp_generate",
+      "params": {
+        "SECRET": "${totpSecret}",
+        "VARIABLE": "setupTotpCode",
+        "DIGITS": 6,
+        "PERIOD": 30
+      }
+    },
+    {
+      "id": "5$t2RsFd[JfgUHp}2kX_",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "Generated TOTP code for setup: ${setupTotpCode}"
+      }
+    },
+    {
+      "id": "L}%P*IYJ[m?y-j@90{B]",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=\"totp-code\"]",
+        "VALUE": "${setupTotpCode}"
+      }
+    },
+    {
+      "id": "V#]*|qgni0K(UyoSJ5{#",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"verify-totp\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "EQ`{X,AT.y+pv-WRl~C#",
+      "type": "web_wait_for_element",
+      "params": {
+        "SELECTOR": "[data-test=\"totp-success\"]",
+        "STATE": "visible",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "^WHm0,Fx;o$VBclZ8c0_",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "MFA enabled successfully, signing out"
+      }
+    },
+    {
+      "id": "iU3Ke_CQ;F5|0@pxT,cj",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "AO5(}n;ToA.1il-)Nu7M",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-out\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "*lM9kBqEKhxQ?FtH[~G?",
+      "type": "web_wait_for_element",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-in\"]",
+        "STATE": "visible",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "kizS+|D=4vwBu/(U)avz",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== MFA Setup Complete ==="
+      }
+    }
+  ],
+  "afterAll": [
+    {
+      "id": "W$)0(eIG=HV.!9.D-xYq",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== Cleanup: Resetting MFA for ${credentials.customer2.email} via API ==="
+      }
+    },
+    {
+      "id": "NQQC8Y(H^t9n+a;m_etJ",
+      "type": "api_post",
+      "params": {
+        "URL": "${apiBaseUrl}/users/login",
+        "BODY": "{\"email\": \"${credentials.admin.email}\", \"password\": \"${credentials.admin.password}\"}",
+        "HEADERS": ""
+      }
+    },
+    {
+      "id": "(Yz{~o8=,!GHKiy2U34M",
+      "type": "api_assert_status",
+      "params": {
+        "STATUS": 200
+      }
+    },
+    {
+      "id": "GTu7_?N`umdc-oJlb5BS",
+      "type": "api_extract_jsonpath",
+      "params": {
+        "JSONPATH": "$.access_token",
+        "VARIABLE": "adminToken"
+      }
+    },
+    {
+      "id": "trPfsFB1F0mM5w}Hpfx,",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "Admin token: ${adminToken}"
+      }
+    },
+    {
+      "id": "=e?79omC{qiY1#smUNjG",
+      "type": "api_get",
+      "params": {
+        "URL": "${apiBaseUrl}/users/search?q=${credentials.customer2.email}",
+        "HEADERS": "Authorization: Bearer ${adminToken}"
+      }
+    },
+    {
+      "id": "vK%AlOP^1)pX7dS_5VeZ",
+      "type": "api_assert_status",
+      "params": {
+        "STATUS": 200
+      }
+    },
+    {
+      "id": "UM^0~]PA~PxIMGTbDf7;",
+      "type": "api_extract_jsonpath",
+      "params": {
+        "JSONPATH": "$.data[0].id",
+        "VARIABLE": "userId"
+      }
+    },
+    {
+      "id": "r0`m3qXYLOeSQE]5;uso",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "Resetting TOTP for user ID: ${userId}"
+      }
+    },
+    {
+      "id": "7`A|/A7QYDDAy@BQOe]o",
+      "type": "api_patch",
+      "params": {
+        "URL": "${apiBaseUrl}/users/${userId}",
+        "BODY": "{\"totp_enabled\": false}",
+        "HEADERS": "Authorization: Bearer ${adminToken}"
+      }
+    },
+    {
+      "id": ":UH`4.2YTZ,B}i00FeIU",
+      "type": "api_assert_status",
+      "params": {
+        "STATUS": 200
+      }
+    },
+    {
+      "id": "[*ho%_37B-E6d1xzI#WC",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== MFA Cleanup Complete ==="
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "test-mfa-login",
+      "name": "Login with MFA/TOTP Verification",
+      "description": "Login to an account with MFA enabled and verify with TOTP code",
+      "tags": [
+        "web",
+        "login",
+        "mfa",
+        "totp"
+      ],
+      "steps": [
+        {
+          "id": "6nLQ,~|if0H/0e,FPt2X",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Testing MFA login for ${credentials.customer2.email}"
+          }
+        },
+        {
+          "id": "%DKD|?!rUIKViVg~Qpqe",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "networkidle"
+          }
+        },
+        {
+          "id": "]HS)+]CQue%Tp2Mz8r;6",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-in\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "n1M%V[{i5mTfA]?^WKpD",
+          "type": "custom_loginwithcredentials",
+          "params": {
+            "EMAIL": "customer2@practicesoftwaretesting.com",
+            "PASSWORD": "welcome01"
+          }
+        },
+        {
+          "id": "XQ/W-iB[hH}.{jUn_BPQ",
+          "type": "totp_generate",
+          "params": {
+            "SECRET": "${totpSecret}",
+            "VARIABLE": "totpCode",
+            "DIGITS": 6,
+            "PERIOD": 30
+          }
+        },
+        {
+          "id": "uQ4%uDAWEw[*MfFpcjEU",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Generated TOTP code: ${totpCode}"
+          }
+        },
+        {
+          "id": "MF}p!a]TPaO5hyw+}/[5",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "#totp",
+            "VALUE": "${totpCode}"
+          }
+        },
+        {
+          "id": "pp#f)zwZz=V`cZBYm~=*",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"verify-totp\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "@X:}j{qPzX#4Lq8rqu-`",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "uT#gab$.]Xk;|or~787R",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "My account",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "Vt-yvD?PlCv8K:iJ|p/x",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "=== MFA Login Successful! ==="
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "mfa",
+      "totp",
+      "login",
+      "api-cleanup",
+      "procedures",
+      "beforeAll",
+      "afterAll"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "apiBaseUrl",
+      "credentials"
+    ],
+    "notes": "beforeAll: Setup MFA via web UI (login, profile, enable TOTP, sign out). test: Login with MFA. afterAll: Reset MFA via API."
+  }
+}

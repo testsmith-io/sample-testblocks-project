@@ -1,0 +1,350 @@
+{
+  "version": "1.0.0",
+  "name": "Order Product E2E Test",
+  "description": "End-to-end test demonstrating full purchase flow from product search to checkout",
+  "variables": {
+    "searchTerm": {
+      "type": "string",
+      "default": "Pliers",
+      "description": "Product to search for"
+    }
+  },
+  "procedures": {
+    "performCheckoutLogin": {
+      "name": "performCheckoutLogin",
+      "description": "Login during checkout process",
+      "params": [
+        {
+          "name": "email",
+          "type": "string",
+          "default": "",
+          "description": "User email"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "default": "",
+          "description": "User password"
+        }
+      ],
+      "steps": [
+        {
+          "id": "checkout-login-1",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${email}"
+          }
+        },
+        {
+          "id": "checkout-login-2",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"password\"]",
+            "VALUE": "${password}"
+          }
+        },
+        {
+          "id": "checkout-login-3",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"login-submit\"]",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    },
+    "fillPaymentDetails": {
+      "name": "fillPaymentDetails",
+      "description": "Fill bank transfer payment details",
+      "params": [
+        {
+          "name": "bankName",
+          "type": "string",
+          "default": "Test Bank",
+          "description": "Bank name"
+        },
+        {
+          "name": "accountName",
+          "type": "string",
+          "default": "Test Account",
+          "description": "Account name"
+        },
+        {
+          "name": "accountNumber",
+          "type": "string",
+          "default": "1234567890",
+          "description": "Account number"
+        }
+      ],
+      "steps": [
+        {
+          "id": "payment-1",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"bank-name\"]",
+            "VALUE": "${bankName}"
+          }
+        },
+        {
+          "id": "payment-2",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"account-name\"]",
+            "VALUE": "${accountName}"
+          }
+        },
+        {
+          "id": "payment-3",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"account-number\"]",
+            "VALUE": "${accountNumber}"
+          }
+        }
+      ]
+    }
+  },
+  "tests": [
+    {
+      "id": "test-order-product",
+      "name": "Complete Product Order Flow",
+      "description": "Search for a product, add to cart, and complete checkout",
+      "tags": [
+        "web",
+        "e2e",
+        "checkout",
+        "order"
+      ],
+      "steps": [
+        {
+          "id": "(r4k4GlF!|bKE`xx+(fo",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "=== Starting Order Flow ==="
+          }
+        },
+        {
+          "id": "v!Rm[H[^3;Uj)@Zv*7_d",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "#kG%NvB/4adq?hiAf=|E",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 1: Search for product - ${searchTerm}"
+          }
+        },
+        {
+          "id": ".:Y46rx6Z?uNKVg)4w2D",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"search-query\"]",
+            "VALUE": "${searchTerm}"
+          }
+        },
+        {
+          "id": "i!-o$jzvAvrSVl-DhP}I",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"search-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "7A0K{c]+ZS|cnOSq_MOm",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 2: Select first product"
+          }
+        },
+        {
+          "id": "CG6(OiiTwA9,l}]lHFJT",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"product-name\"] >> nth=0",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "^L^8}EWA,N_kyDext=+y",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 3: Add to cart"
+          }
+        },
+        {
+          "id": "-a$7gs4v4CRB[kd1XjF?",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"add-to-cart\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "_Fb~yz1[Lf/v+IGtWM$@",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-cart\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "*(!!v6s=2fyLH!/m-#Cr",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 4: Proceed to checkout - Sign in"
+          }
+        },
+        {
+          "id": "P58^a.LGN8E!)[Uese-]",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"proceed-1\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "MG%{b7`$N@Ul$@:^Uj4R",
+          "type": "procedure_call",
+          "params": {
+            "NAME": "performCheckoutLogin",
+            "ARGS": "{\"email\": \"${credentials.customer.email}\", \"password\": \"${credentials.customer.password}\"}"
+          }
+        },
+        {
+          "id": "|hc4w{U:.sKrv)qIwsb:",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 5: Confirm address"
+          }
+        },
+        {
+          "id": "mH8k::4b,(w{Ox?OGw({",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"proceed-2\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "|yw4T~vsxA]X{@qIl}jO",
+          "type": "web_assert_value",
+          "params": {
+            "SELECTOR": "[data-test=\"city\"]",
+            "VALUE": "Vienna",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "`$6tQx%(BVLAuGp67ao0",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"state\"]",
+            "VALUE": "some state"
+          }
+        },
+        {
+          "id": "]oW*R0W$Xtm;K3Ie]uBd",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"postal_code\"]",
+            "VALUE": "1234de"
+          }
+        },
+        {
+          "id": "${^292r{?/cc5_lD*b]f",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"proceed-3\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "z4B2*i2Af!YcNL8o-{Kg",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 6: Select payment method"
+          }
+        },
+        {
+          "id": "7RnxdOO,o0yCI,MWT2~y",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"payment-method\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "R8O_/Kx!8#(:W`mbLYvw",
+          "type": "web_select",
+          "params": {
+            "SELECTOR": "[data-test=\"payment-method\"]",
+            "VALUE": "Cash on Delivery"
+          }
+        },
+        {
+          "id": "?`)[_eFqtN,/MeC;V~oq",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"finish\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "poSHX;xs#oin=i(Vp|*w",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 7: Confirm and finish order"
+          }
+        },
+        {
+          "id": "hZNXSXi9=5[l9+W,d@UU",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"finish\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "$0j)RA4V4FvJGg|FKM%h",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": ".alert-success",
+            "TEXT": "Payment was successful",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "e2e",
+      "checkout",
+      "payment",
+      "forms",
+      "procedures",
+      "variables"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "credentials"
+    ]
+  }
+}

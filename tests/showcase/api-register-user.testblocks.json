@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "name": "API User Registration Test",
+  "description": "Tests user registration endpoint with faker-generated unique email",
+  "plugins": [
+    "faker-plugin"
+  ],
+  "tests": [
+    {
+      "id": "test-register-user",
+      "name": "Register New User",
+      "description": "Create a new user account with unique email using faker",
+      "tags": [
+        "api",
+        "registration"
+      ],
+      "steps": [
+        {
+          "id": "QMlmDFH|tR!ecXv=*b`-",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "uniqueEmail",
+            "TYPE": "email"
+          }
+        },
+        {
+          "id": "KG2s$SX!:$BX1PS`fKr0",
+          "type": "api_post",
+          "params": {
+            "URL": "https://api-v4.practicesoftwaretesting.com/users/register",
+            "BODY": "{\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"address\": \"Street 1\",\n  \"city\": \"City\",\n  \"state\": \"State\",\n  \"country\": \"Country\",\n  \"postcode\": \"1234AA\",\n  \"phone\": \"0987654321\",\n  \"dob\": \"1970-01-01\",\n  \"password\": \"T3ster01!\",\n  \"email\": \"${uniqueEmail}\"\n}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "Y!XTwg9L?ar*[*nOm31E",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 201
+          }
+        },
+        {
+          "id": "|#AG?bC7I}:GF)#;)G|L",
+          "type": "api_extract",
+          "params": {
+            "PATH": "id",
+            "VARIABLE": "userId"
+          }
+        }
+      ]
+    }
+  ],
+  "procedures": {},
+  "variables": {
+    "ed": {
+      "default": ""
+    },
+    "eds": {
+      "default": ""
+    },
+    "edse": {
+      "default": ""
+    }
+  }
+}

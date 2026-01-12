@@ -1,0 +1,52 @@
+{
+  "name": "add-to-cart",
+  "description": "Add a product to the shopping cart by product name",
+  "category": "Shopping",
+  "color": "#FF9800",
+  "params": [
+    {
+      "name": "productName",
+      "type": "string",
+      "description": "Name of the product to add"
+    }
+  ],
+  "steps": [
+    {
+      "id": "cart-step-1",
+      "type": "web_navigate",
+      "params": {
+        "URL": "${baseUrl}"
+      }
+    },
+    {
+      "id": "cart-step-2",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "text=${snippet_productName}"
+      }
+    },
+    {
+      "id": "cart-step-3",
+      "type": "web_wait_for_selector",
+      "params": {
+        "SELECTOR": "[data-test=add-to-cart]",
+        "TIMEOUT": 5000
+      }
+    },
+    {
+      "id": "cart-step-4",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=add-to-cart]"
+      }
+    },
+    {
+      "id": "cart-step-5",
+      "type": "web_wait_for_selector",
+      "params": {
+        "SELECTOR": ".toast-success",
+        "TIMEOUT": 5000
+      }
+    }
+  ]
+}

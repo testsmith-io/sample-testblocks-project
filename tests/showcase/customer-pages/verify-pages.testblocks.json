@@ -1,0 +1,241 @@
+{
+  "version": "1.0.0",
+  "name": "Customer Page Navigation Tests",
+  "description": "Verify all customer account pages are accessible. Uses folder hooks for shared login.",
+  "variables": {
+    "currentPage": {
+      "type": "string",
+      "default": "",
+      "description": "Currently tested page name"
+    }
+  },
+  "tests": [
+    {
+      "id": "test-profile-page",
+      "name": "Navigate to Profile Page",
+      "description": "Verify the profile page loads correctly with all required elements",
+      "tags": [
+        "web",
+        "navigation",
+        "profile"
+      ],
+      "softAssertions": true,
+      "steps": [
+        {
+          "id": "(+W2[{uTTLyCB);toSYd",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "tTg;DbQtm5NPv6xP|/QB",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-my-profile\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "$/Kd6VqdaQQL6yug*-U)",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "h2",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "4;9~F43KOL^#/=-b2W8F",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "Profile",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "q2C_N%*@16y7x|e-w!]k",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"first-name\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "+VZcLsL7dL}Hkoc$vg]w",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "~J]IaA-VU^tQA_;,Y`8M",
+          "type": "web_assert_visible",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    },
+    {
+      "id": "test-favorites-page",
+      "name": "Navigate to Favorites Page",
+      "description": "Verify the favorites page loads correctly",
+      "tags": [
+        "web",
+        "navigation",
+        "favorites"
+      ],
+      "steps": [
+        {
+          "id": "N}r$(N:em$KSmUyDE*Ct",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "05WoYRxB,b(6z;FOW#SC",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-my-favorites\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "#3*W|.,f*`y-+NNE@uP%",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "`^Rj0I$T[}W-zvcu.H{J",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "Favorites",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-messages-page",
+      "name": "Navigate to Messages Page",
+      "description": "Verify the messages page loads correctly",
+      "tags": [
+        "web",
+        "navigation",
+        "messages"
+      ],
+      "steps": [
+        {
+          "id": "P(7T+[+P=7.C;RQR0*S$",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "fWju~8sCjxcA0lzoKOfY",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-my-messages\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "MAUrs@`A%JNT08bS[]})",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "~#]Y4rKgM}BZty|:?H?j",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "Messages",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-invoices-page",
+      "name": "Navigate to Invoices Page",
+      "description": "Verify the invoices page loads correctly",
+      "tags": [
+        "web",
+        "navigation",
+        "invoices"
+      ],
+      "steps": [
+        {
+          "id": "Bnt02`C-^eGjP;Z%Uu{i",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "0vc,dETdz}iWz$+Kiyr2",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-my-invoices\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "R~=4iW7pUHd2ShLdZmuC",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "q,Jkmq~pxz!2fX:^Kbk[",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "Invoices",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "folder-hooks",
+      "navigation",
+      "soft-assertions",
+      "variables"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "credentials"
+    ],
+    "notes": "This test file uses folder hooks (hooks.testblocks.json) for shared login/logout. Tests assume user is already logged in."
+  }
+}

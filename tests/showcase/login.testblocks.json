@@ -1,0 +1,160 @@
+{
+  "version": "1.0.0",
+  "name": "Login Tests",
+  "description": "Demonstrates basic login functionality with valid and invalid credentials",
+  "variables": {
+    "loginUrl": {
+      "type": "string",
+      "default": "${baseUrl}/auth/login",
+      "description": "Login page URL"
+    }
+  },
+  "plugins": [
+    "faker-plugin"
+  ],
+  "tests": [
+    {
+      "id": "test-valid-login",
+      "name": "Valid Login - Customer",
+      "description": "Login with valid customer credentials",
+      "tags": [
+        "login",
+        "smoke",
+        "positive"
+      ],
+      "steps": [
+        {
+          "id": "[Gqt%=+2]SMLuNS{ulQe",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "Y]=0]Sdl2+pF46iQ_m|x",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-in\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "]FD-rCk)@TekyZvKqEoL",
+          "type": "custom_performlogin",
+          "params": {
+            "EMAIL": "customer@practicesoftwaretesting.com",
+            "PASSWORD": "welcome01"
+          }
+        },
+        {
+          "id": "RB_ABhk][3})%8g)bYc|",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": "[data-test=\"page-title\"]",
+            "TEXT": "My account",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-invalid-login",
+      "name": "Invalid Login - Wrong Password",
+      "description": "Verify error message when using wrong password",
+      "tags": [
+        "login",
+        "negative"
+      ],
+      "steps": [
+        {
+          "id": "IFg!-FFyw`SeYNmvX7ZP",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}/auth/login",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "51mh%[bJqmEVw+]sgCi6",
+          "type": "custom_performlogin",
+          "params": {
+            "EMAIL": "customer3@practicesoftwaretesting.com",
+            "PASSWORD": "x"
+          }
+        },
+        {
+          "id": "AdG@BeE3E{modN@[P$,w",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": "[data-test=\"password-error\"]",
+            "TEXT": "Password length is invalid",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-login-validation",
+      "name": "Login Form Validation",
+      "description": "Verify validation messages for blank email and password",
+      "tags": [
+        "login",
+        "validation"
+      ],
+      "softAssertions": true,
+      "steps": [
+        {
+          "id": "MW,y%d_j1gZG;}qoNPrz",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}/auth/login",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "IS^udht@b9}WiW3I1tq[",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"login-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "d/G-z{]z+3|yqJa9tu/Y",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"email-error\"]",
+            "TEXT": "Email is required",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "4OtJBnf})q(R#MIV}8xK",
+          "type": "web_assert_text_equals",
+          "params": {
+            "SELECTOR": "[data-test=\"password-error\"]",
+            "TEXT": "Password is required",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "login",
+      "procedures",
+      "faker",
+      "soft-assertions"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "credentials"
+    ]
+  }
+}

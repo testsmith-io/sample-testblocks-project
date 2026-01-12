@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Reports
+reports/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+testblocks-results

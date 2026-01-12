@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "name": "Customer Pages Hooks",
+  "description": "Shared hooks for customer page tests - opens website and logs in",
+  "variables": {
+    "customerEmail": {
+      "type": "string",
+      "default": "${credentials.customer.email}",
+      "description": "Customer email for login"
+    },
+    "customerPassword": {
+      "type": "string",
+      "default": "${credentials.customer.password}",
+      "description": "Customer password for login"
+    }
+  },
+  "beforeAll": [
+    {
+      "id": "6SkfqQBT}]%A?UQZ48qM",
+      "type": "web_navigate",
+      "params": {
+        "URL": "${baseUrl}",
+        "WAIT_UNTIL": "load"
+      }
+    },
+    {
+      "id": "*}`z;u[ge={u:M)-bQ2o",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-in\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "W2CG*iJ%v5F^@9bI^[8$",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=\"email\"]",
+        "VALUE": "customer@practicesoftwaretesting.com"
+      }
+    },
+    {
+      "id": "l-PrJcIeq,4vCTrJ?7uW",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=\"password\"]",
+        "VALUE": "welcome01"
+      }
+    },
+    {
+      "id": "9U!3n}@^nfyYy=b($Tys",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"login-submit\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "]XKn=1orxPCfo^p}LY*r",
+      "type": "web_assert_text_contains",
+      "params": {
+        "SELECTOR": "[data-test=\"page-title\"]",
+        "TEXT": "My account",
+        "TIMEOUT": 30000
+      }
+    }
+  ],
+  "afterAll": [
+    {
+      "id": "cleanup-1",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== Customer Pages Suite: Cleanup ==="
+      }
+    },
+    {
+      "id": "cleanup-2",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "cleanup-3",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-out\"]",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "cleanup-4",
+      "type": "web_wait_for_element",
+      "params": {
+        "SELECTOR": "[data-test=\"nav-sign-in\"]",
+        "STATE": "visible",
+        "TIMEOUT": 30000
+      }
+    },
+    {
+      "id": "cleanup-5",
+      "type": "logic_log",
+      "params": {
+        "LEVEL": "info",
+        "MESSAGE": "=== Signed out successfully ==="
+      }
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "folder-hooks",
+      "procedures",
+      "login",
+      "logout"
+    ],
+    "usesGlobals": [
+      "baseUrl",
+      "credentials"
+    ],
+    "notes": "These hooks apply to all tests in this folder and subfolders"
+  }
+}

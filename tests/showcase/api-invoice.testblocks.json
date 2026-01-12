@@ -1,0 +1,239 @@
+{
+  "version": "1.0.0",
+  "name": "Invoice API Tests",
+  "description": "Demonstrates API authentication flow and invoice retrieval with JWT tokens",
+  "variables": {
+    "accessToken": {
+      "type": "string",
+      "default": "",
+      "description": "JWT access token"
+    },
+    "invoiceCount": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of invoices found"
+    },
+    "firstName": {
+      "type": "string",
+      "default": "",
+      "description": "User's first name"
+    },
+    "lastName": {
+      "type": "string",
+      "default": "",
+      "description": "User's last name"
+    }
+  },
+  "procedures": {
+    "authenticateUser": {
+      "name": "authenticateUser",
+      "description": "Authenticate via API and set Authorization header",
+      "params": [
+        {
+          "name": "email",
+          "type": "string",
+          "default": "",
+          "description": "User email"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "default": "",
+          "description": "User password"
+        }
+      ],
+      "steps": [
+        {
+          "id": "auth-1",
+          "type": "api_post",
+          "params": {
+            "URL": "${apiBaseUrlV4}/users/login",
+            "BODY": "{\"email\": \"${email}\", \"password\": \"${password}\"}"
+          }
+        },
+        {
+          "id": "auth-2",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": "auth-3",
+          "type": "api_extract_jsonpath",
+          "params": {
+            "PATH": "$.access_token",
+            "VARIABLE": "accessToken"
+          }
+        },
+        {
+          "id": "auth-4",
+          "type": "api_set_header",
+          "params": {
+            "NAME": "Authorization",
+            "VALUE": "Bearer ${accessToken}"
+          }
+        }
+      ]
+    }
+  },
+  "beforeAll": [
+    {
+      "id": "9s9XKO(1vFAG+D$pwl_F",
+      "type": "api_post",
+      "params": {
+        "URL": "${apiBaseUrl}/users/login",
+        "BODY": "{\"email\": \"${credentials.admin.email}\", \"password\": \"${credentials.admin.password}\"}",
+        "HEADERS": ""
+      }
+    },
+    {
+      "id": "60f:Nj2b2a_Hx?v|t|:$",
+      "type": "api_assert_status",
+      "params": {
+        "STATUS": 200
+      }
+    },
+    {
+      "id": "P]EV6)qJ|m5pa:~jOW;}",
+      "type": "api_extract_jsonpath",
+      "params": {
+        "JSONPATH": "$.access_token",
+        "VARIABLE": "adminToken"
+      }
+    }
+  ],
+  "tests": [
+    {
+      "id": "test-get-invoices",
+      "name": "Get Customer Invoices",
+      "description": "Retrieve invoices for the authenticated customer",
+      "tags": [
+        "api",
+        "auth",
+        "invoice"
+      ],
+      "steps": [
+        {
+          "id": "vaUKnoHzuQ7JX~qNv:tY",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrl}/invoices",
+            "HEADERS": "Authorization: Bearer ${adminToken}"
+          }
+        },
+        {
+          "id": "J7:B4tup/tmviPT,)kPd",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": "%=Cgr{MfVTzWGj6z[uRy",
+          "type": "api_extract_jsonpath",
+          "params": {
+            "JSONPATH": "$.data.id",
+            "VARIABLE": "invoiceCount"
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-get-user-profile",
+      "name": "Get Current User Profile",
+      "description": "Retrieve the authenticated user's profile using the token",
+      "tags": [
+        "api",
+        "auth",
+        "profile"
+      ],
+      "steps": [
+        {
+          "id": "oD`?Qex:9vpS5}@$XLAM",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrl}/users/me",
+            "HEADERS": "Authorization: Bearer ${adminToken}"
+          }
+        },
+        {
+          "id": "^oL{38Ebj!R]-zh)OE!y",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": "+?[}R]M6*y{]m@MBzZt+",
+          "type": "api_assert_body_contains",
+          "params": {
+            "PATH": "email",
+            "VALUE": "${credentials.admin.email}"
+          }
+        },
+        {
+          "id": ")Tq|ei26@?{v+]X_EmwL",
+          "type": "api_extract_jsonpath",
+          "params": {
+            "JSONPATH": "$.data.id",
+            "VARIABLE": "firstName"
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-unauthorized-access",
+      "name": "Verify Unauthorized Access",
+      "description": "Verify that invoices endpoint requires authentication",
+      "tags": [
+        "api",
+        "auth",
+        "negative",
+        "security"
+      ],
+      "steps": [
+        {
+          "id": "aVjbIFb-a+ZOdE;%;3*C",
+          "type": "api_clear_headers",
+          "params": {}
+        },
+        {
+          "id": "77g#[7@pwivSIg6Jeksq",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrlV4}/invoices",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "`c7]/9U)l.dupeKw(G|e",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 401
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "api",
+      "authentication",
+      "jwt",
+      "beforeAll",
+      "procedures",
+      "variables"
+    ],
+    "usesGlobals": [
+      "apiBaseUrlV4",
+      "credentials"
+    ],
+    "notes": "Uses beforeAll hook to authenticate once for all tests. Demonstrates procedure reuse and security testing."
+  }
+}

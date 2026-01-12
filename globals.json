@@ -1,0 +1,117 @@
+{
+  "variables": {
+    "baseUrl": {
+      "type": "string",
+      "default": "https://practicesoftwaretesting.com",
+      "description": "Base URL for the web application"
+    },
+    "apiBaseUrl": {
+      "type": "string",
+      "default": "https://api.practicesoftwaretesting.com",
+      "description": "Base API URL"
+    },
+    "apiBaseUrlV4": {
+      "type": "string",
+      "default": "https://api-v4.practicesoftwaretesting.com",
+      "description": "API V4 URL"
+    },
+    "apiEndpoints": {
+      "type": "object",
+      "default": {
+        "login": "/users/login",
+        "register": "/users/register",
+        "invoices": "/invoices",
+        "brands": "/brands",
+        "products": "/products"
+      },
+      "description": "Common API endpoints"
+    },
+    "defaultTimeout": {
+      "type": "number",
+      "default": 30000,
+      "description": "Default timeout in milliseconds"
+    },
+    "credentials": {
+      "type": "object",
+      "default": {
+        "customer": {
+          "email": "customer@practicesoftwaretesting.com",
+          "password": "welcome01"
+        },
+        "customer2": {
+          "email": "customer2@practicesoftwaretesting.com",
+          "password": "welcome01"
+        },
+        "admin": {
+          "email": "admin@practicesoftwaretesting.com",
+          "password": "welcome01"
+        },
+        "validUser": {
+          "email": "customer@practicesoftwaretesting.com",
+          "password": "welcome01"
+        }
+      },
+      "description": "Test user credentials"
+    },
+    "mfa": {
+      "type": "object",
+      "default": {
+        "secret": "543287",
+        "email": "customer2@practicesoftwaretesting.com",
+        "password": "welcome01"
+      },
+      "description": "MFA test account credentials and TOTP secret"
+    }
+  },
+  "config": {
+    "headless": true,
+    "retryCount": 2,
+    "screenshotOnFailure": true
+  },
+  "procedures": {
+    "performLogin": {
+      "name": "performLogin",
+      "description": "Reusable login procedure",
+      "params": [
+        {
+          "name": "email",
+          "type": "string",
+          "default": "",
+          "description": "User email"
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "default": "",
+          "description": "User password"
+        }
+      ],
+      "steps": [
+        {
+          "id": "login-fill-email",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${email}"
+          }
+        },
+        {
+          "id": "login-fill-password",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"password\"]",
+            "VALUE": "${password}"
+          }
+        },
+        {
+          "id": "login-submit",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"login-submit\"]",
+            "TIMEOUT": 30000
+          }
+        }
+      ]
+    }
+  }
+}

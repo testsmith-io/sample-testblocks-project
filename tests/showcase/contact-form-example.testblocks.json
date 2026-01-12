@@ -1,0 +1,151 @@
+{
+  "version": "1.0.0",
+  "name": "Contact Form Example",
+  "description": "Example demonstrating contact form submission with faker-generated data and global variables",
+  "tests": [
+    {
+      "id": "test-contact-form-submission",
+      "name": "Submit contact form with faker data",
+      "description": "Fill and submit contact form using dynamically generated faker data",
+      "tags": [
+        "web",
+        "contact",
+        "form",
+        "faker"
+      ],
+      "steps": [
+        {
+          "id": "DFn:wcsUtif+bC|-CbN;",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "xIV6LA6*$h9b=9NCo0{9",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-contact\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "xTL*Mo4ZRU`Q=K{Fe_7S",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "firstName",
+            "TYPE": "firstName"
+          }
+        },
+        {
+          "id": "M3Z_XFA)mzf=hB(Up}Me",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"first-name\"]",
+            "VALUE": "${firstName}"
+          }
+        },
+        {
+          "id": "eeK3-mAhL)uM{a`G_mG-",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "lastName",
+            "TYPE": "lastName"
+          }
+        },
+        {
+          "id": "#=3~y8!c$f]Uf(*l2VNT",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name\"]",
+            "VALUE": "${lastName}"
+          }
+        },
+        {
+          "id": "G7ni^A(LTTxQjbOoq@I;",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "email",
+            "TYPE": "email"
+          }
+        },
+        {
+          "id": "Y?t7${%JrSz0*cMo$%+b",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${email}"
+          }
+        },
+        {
+          "id": "qBsSu,ZyE[$xw,Jj4}Cf",
+          "type": "web_select",
+          "params": {
+            "SELECTOR": "[data-test=\"subject\"]",
+            "VALUE": "return"
+          }
+        },
+        {
+          "id": "eG0T3VksNbd)EEvP2{Bd",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"message\"]",
+            "VALUE": "This is a message that should contain enough characters"
+          }
+        },
+        {
+          "id": "gWtDiF_SKqRHOM[|I/jG",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Submitting contact form for: ${firstName} ${lastName} <${email}>"
+          }
+        },
+        {
+          "id": "p}q88z@zADK2Lz.q(_%k",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"contact-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "rnuUB1RfwpX|}s)Y+_Y%",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": ".alert-success",
+            "STATE": "visible",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": ";9},WbX?i!]/mdaEOCkn",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": ".alert-success",
+            "TEXT": "Thanks for your message! We will contact you shortly.",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "BC5?`,c5W))HW(v~;{J|",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Contact form submitted successfully!"
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2024-12-26",
+    "author": "TestBlocks",
+    "usesGlobals": [
+      "baseUrl"
+    ]
+  },
+  "procedures": {}
+}

@@ -1,0 +1,58 @@
+{
+  "name": "api-login",
+  "description": "Login via API and store access token",
+  "category": "Auth",
+  "color": "#4CAF50",
+  "params": [
+    {
+      "name": "email",
+      "type": "string",
+      "description": "Login email address"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "description": "Login password"
+    },
+    {
+      "name": "tokenVariable",
+      "type": "string",
+      "default": "accessToken",
+      "description": "Variable name to store the access token"
+    }
+  ],
+  "steps": [
+    {
+      "id": "api-login-step-1",
+      "type": "api_post",
+      "params": {
+        "URL": "${apiBaseUrl}${apiEndpoints.login}",
+        "BODY": "{\"email\": \"${snippet_email}\", \"password\": \"${snippet_password}\"}",
+        "HEADERS": ""
+      }
+    },
+    {
+      "id": "api-login-step-2",
+      "type": "api_assert_status",
+      "params": {
+        "STATUS": 200
+      }
+    },
+    {
+      "id": "api-login-step-3",
+      "type": "api_extract",
+      "params": {
+        "PATH": "access_token",
+        "VARIABLE": "${snippet_tokenVariable}"
+      }
+    },
+    {
+      "id": "api-login-step-4",
+      "type": "logic_log",
+      "params": {
+        "MESSAGE": "API login successful for ${snippet_email}",
+        "LEVEL": "info"
+      }
+    }
+  ]
+}

@@ -1,0 +1,331 @@
+{
+  "version": "1.0.0",
+  "name": "Brand API CRUD Tests",
+  "description": "Complete CRUD operations test for the Brand API endpoint",
+  "variables": {
+    "brandSlug": {
+      "type": "string",
+      "default": "",
+      "description": "Generated brand slug"
+    },
+    "brandName": {
+      "type": "string",
+      "default": "",
+      "description": "Generated brand name"
+    },
+    "brandId": {
+      "type": "string",
+      "default": "",
+      "description": "Created brand ID"
+    },
+    "updatedBrandName": {
+      "type": "string",
+      "default": "",
+      "description": "Updated brand name"
+    }
+  },
+  "plugins": [
+    "faker-plugin"
+  ],
+  "tests": [
+    {
+      "id": "test-brand-crud",
+      "name": "Brand CRUD Operations",
+      "description": "Create, Read, Update, and Delete a brand via API",
+      "tags": [
+        "api",
+        "crud",
+        "brand"
+      ],
+      "steps": [
+        {
+          "id": "IO4!-/%:RI=TP,MXCB%~",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "=== Brand API CRUD Test ==="
+          }
+        },
+        {
+          "id": "G}Ui`M(C-%L|ls.h!0?;",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "brandSlug",
+            "TYPE": "uuid"
+          }
+        },
+        {
+          "id": "B4}/|cB#B6g}?.uq[qH(",
+          "type": "faker_store_value",
+          "params": {
+            "VARIABLE": "brandName",
+            "TYPE": "companyName"
+          }
+        },
+        {
+          "id": "6naxyr/7c?JWAtk4lW?r",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 1: CREATE - Creating new brand: ${brandName} (slug: ${brandSlug})"
+          }
+        },
+        {
+          "id": ",N9muYMYvV{ls0HA,FAf",
+          "type": "api_post",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands",
+            "BODY": "{\"name\": \"${brandName}\", \"slug\": \"${brandSlug}\"}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "x;3P$vkZL~JR~Oh2sT^a",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 201
+          }
+        },
+        {
+          "id": "4ZUf3?Oi,CxYpA%Mbxge",
+          "type": "api_extract_jsonpath",
+          "params": {
+            "JSONPATH": "$.id",
+            "VARIABLE": "brandId"
+          }
+        },
+        {
+          "id": "+_S(xnYR3yNu)**gU6?V",
+          "type": "api_assert_body_contains",
+          "params": {
+            "PATH": "name",
+            "VALUE": "${brandName}"
+          }
+        },
+        {
+          "id": ":@Co9_lD`2mGzPAm}r,g",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Created brand with ID: ${brandId}"
+          }
+        },
+        {
+          "id": "dbvNyZZXw)CkYCBP;s(g",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 2: READ - Get brand by ID"
+          }
+        },
+        {
+          "id": "=HZI|b=@.I-XI-B6l;/-",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands/${brandId}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "{r7m_MbWz}V0,WfA1oz[",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": ")S]55^6Hrq$AJ,/n99,i",
+          "type": "api_assert_body_contains",
+          "params": {
+            "PATH": "name",
+            "VALUE": "${brandName}"
+          }
+        },
+        {
+          "id": "{:Jh[C(=V?F|Cu_X~0)|",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 3: UPDATE - Update brand name"
+          }
+        },
+        {
+          "id": "Bol^e9_}VfAl$(tvie^)",
+          "type": "logic_set_variable",
+          "params": {
+            "NAME": "updatedBrandName"
+          }
+        },
+        {
+          "id": "GRY*dWRI=M/fQWh|s6D%",
+          "type": "api_put",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands/${brandId}",
+            "BODY": "{\"name\": \"${updatedBrandName}\", \"slug\": \"${brandSlug}-updated\"}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "qReMez0#Pr}!h}.GXM@J",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": "j/v$oOS8]0/cwsm%1A)M",
+          "type": "api_assert_body_contains",
+          "params": {
+            "PATH": "success",
+            "VALUE": "true"
+          }
+        },
+        {
+          "id": "Qf{fh6e]smv9E1SoR%)P",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Brand updated to: ${updatedBrandName}"
+          }
+        },
+        {
+          "id": "T!7RE+Z9BI/yr;qUED;f",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 4: READ - Verify update"
+          }
+        },
+        {
+          "id": "fl++@oj=RN8x$YDNpBnY",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands/${brandId}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": ")}Zxe=S]r/G,ls.l1^iJ",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        },
+        {
+          "id": "m^I2W,3rz{=]idp[x,PJ",
+          "type": "api_assert_body_contains",
+          "params": {
+            "PATH": "name",
+            "VALUE": "${updatedBrandName}"
+          }
+        },
+        {
+          "id": "I~tkcs|V:CD%Zo{j*?z;",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 5: DELETE - Delete brand"
+          }
+        },
+        {
+          "id": "IHE~U)hCbuD`,~:Fq^Ho",
+          "type": "api_delete",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands/${brandId}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "`:Z0ET_pPXgW3SMHRZjX",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 204
+          }
+        },
+        {
+          "id": "=g{,xaK#Xscc,c9_YeEF",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Brand deleted successfully"
+          }
+        },
+        {
+          "id": "aGJVjH?aQWxhfn;TbWSm",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "Step 6: READ - Verify deletion (expect 404)"
+          }
+        },
+        {
+          "id": "/R)r}Az+J1pZ^d^k$,q;",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands/${brandId}",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "%QR*8o?)wcNJDe$`PRy4",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 404
+          }
+        },
+        {
+          "id": "D;:bEs+=Wl^xEo-,iS-6",
+          "type": "logic_log",
+          "params": {
+            "LEVEL": "info",
+            "MESSAGE": "=== Brand CRUD Test Completed Successfully ==="
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-get-all-brands",
+      "name": "Get All Brands",
+      "description": "Retrieve all brands and verify response structure",
+      "tags": [
+        "api",
+        "read",
+        "brand"
+      ],
+      "steps": [
+        {
+          "id": "8h}TJe@`TmkT?799ujK/",
+          "type": "api_get",
+          "params": {
+            "URL": "${apiBaseUrlV4}/brands",
+            "HEADERS": ""
+          }
+        },
+        {
+          "id": "9M9#6GfW4xrJM)sPXmFh",
+          "type": "api_assert_status",
+          "params": {
+            "STATUS": 200
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "api",
+      "crud",
+      "faker",
+      "jsonpath",
+      "variables"
+    ],
+    "usesGlobals": [
+      "apiBaseUrlV4"
+    ],
+    "notes": "This test requires the Faker plugin for generating test data"
+  }
+}

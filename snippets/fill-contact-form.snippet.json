@@ -1,0 +1,90 @@
+{
+  "name": "fill-contact-form",
+  "description": "Fill out the contact form with provided details",
+  "category": "Forms",
+  "color": "#2196F3",
+  "params": [
+    {
+      "name": "firstName",
+      "type": "string",
+      "description": "First name"
+    },
+    {
+      "name": "lastName",
+      "type": "string",
+      "description": "Last name"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "description": "Email address"
+    },
+    {
+      "name": "subject",
+      "type": "string",
+      "default": "customer-service",
+      "description": "Subject dropdown value"
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "description": "Message text"
+    }
+  ],
+  "steps": [
+    {
+      "id": "contact-step-1",
+      "type": "web_navigate",
+      "params": {
+        "URL": "${baseUrl}/#/contact"
+      }
+    },
+    {
+      "id": "contact-step-2",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=first-name]",
+        "VALUE": "${snippet_firstName}"
+      }
+    },
+    {
+      "id": "contact-step-3",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=last-name]",
+        "VALUE": "${snippet_lastName}"
+      }
+    },
+    {
+      "id": "contact-step-4",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=email]",
+        "VALUE": "${snippet_email}"
+      }
+    },
+    {
+      "id": "contact-step-5",
+      "type": "web_select",
+      "params": {
+        "SELECTOR": "[data-test=subject]",
+        "VALUE": "${snippet_subject}"
+      }
+    },
+    {
+      "id": "contact-step-6",
+      "type": "web_fill",
+      "params": {
+        "SELECTOR": "[data-test=message]",
+        "VALUE": "${snippet_message}"
+      }
+    },
+    {
+      "id": "contact-step-7",
+      "type": "web_click",
+      "params": {
+        "SELECTOR": "[data-test=contact-submit]"
+      }
+    }
+  ]
+}

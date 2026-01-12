@@ -1,0 +1,193 @@
+{
+  "version": "1.0.0",
+  "name": "Product Search Tests",
+  "description": "Demonstrates searching for products with data-driven test cases",
+  "variables": {
+    "productCount": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of products found in search results"
+    }
+  },
+  "tests": [
+    {
+      "id": "test-search-products",
+      "name": "Search for Products",
+      "description": "Search for products and verify result count",
+      "tags": [
+        "web",
+        "search",
+        "data-driven"
+      ],
+      "data": [
+        {
+          "name": "Row 1",
+          "values": {
+            "query": "Long nose pliers",
+            "expected_items": 1
+          }
+        },
+        {
+          "name": "Row 2",
+          "values": {
+            "query": "Hammer",
+            "expected_items": 7
+          }
+        },
+        {
+          "name": "Row 3",
+          "values": {
+            "query": "Screwdriver",
+            "expected_items": 2
+          }
+        }
+      ],
+      "steps": [
+        {
+          "id": "nVXd*fYx)B@9rIx#frZN",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "(u}0j7Hu#,BMAnz$v?$0",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"search-query\"]",
+            "VALUE": "${query}"
+          }
+        },
+        {
+          "id": "n~k8E.Ip@0LF1GfST_]/",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"search-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "ww!4.pE@4Bl#PY[gOY`D",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"search_completed\"]",
+            "STATE": "visible",
+            "TIMEOUT": 20000
+          }
+        },
+        {
+          "id": "@dSA|gK!|q_t]0Ia:y+g",
+          "type": "logic_set_variable",
+          "params": {
+            "NAME": "productCount",
+            "VALUE": {
+              "id": "O||Lom-%:{[s*gzG@GaZ",
+              "type": "web_count_elements",
+              "params": {
+                "SELECTOR": "[data-test=\"product-name\"]"
+              }
+            }
+          }
+        },
+        {
+          "id": "#%IK!c/,h)aYeiJB#}-y",
+          "type": "logic_assert",
+          "params": {
+            "CONDITION": {
+              "id": "m{5v9_?Sy%zxAl48gW.#",
+              "type": "logic_compare",
+              "params": {
+                "A": {
+                  "id": ".@~xGvRFttc#rx1yNuXK",
+                  "type": "logic_get_variable",
+                  "params": {
+                    "NAME": "productCount"
+                  }
+                },
+                "OP": "eq",
+                "B": {
+                  "id": "gh4OUE9-3D@37Reac6U;",
+                  "type": "logic_get_variable",
+                  "params": {
+                    "NAME": "expected_items"
+                  }
+                }
+              }
+            },
+            "MESSAGE": "Expected ${expected_items} products for query '${query}', but found ${productCount}"
+          }
+        }
+      ],
+      "softAssertions": false
+    },
+    {
+      "id": "test-search-no-results",
+      "name": "Search with No Results",
+      "description": "Search for a non-existent product and verify empty results",
+      "tags": [
+        "web",
+        "search",
+        "negative"
+      ],
+      "steps": [
+        {
+          "id": "3yFc2Ub~,iJkRy9LswR[",
+          "type": "web_navigate",
+          "params": {
+            "URL": "${baseUrl}",
+            "WAIT_UNTIL": "load"
+          }
+        },
+        {
+          "id": "CuWmeCp}@QWcn,*(!Y^C",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"search-query\"]",
+            "VALUE": "nonexistentproduct12345xyz"
+          }
+        },
+        {
+          "id": "m:W^3]oud5z1vb:c5HV`",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"search-submit\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "Dz?H9vS9a}lLWw`eV36(",
+          "type": "web_wait_for_element",
+          "params": {
+            "SELECTOR": "[data-test=\"search_completed\"]",
+            "STATE": "visible",
+            "TIMEOUT": 20000
+          }
+        },
+        {
+          "id": "-=h/Iyq@oUwg1_)*rVb#",
+          "type": "web_assert_text_contains",
+          "params": {
+            "SELECTOR": "body",
+            "TEXT": "There are no products found",
+            "TIMEOUT": 30000
+          }
+        }
+      ],
+      "softAssertions": false
+    }
+  ],
+  "metadata": {
+    "createdAt": "2026-01-11",
+    "author": "TestBlocks",
+    "features": [
+      "search",
+      "data-driven",
+      "assertions",
+      "variables"
+    ],
+    "usesGlobals": [
+      "baseUrl"
+    ]
+  }
+}
