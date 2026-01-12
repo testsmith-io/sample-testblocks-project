@@ -27,7 +27,7 @@ jobs:
         run: npx playwright install --with-deps chromium
 
       - name: Start application
-        run: docker compose up -d
+        run: docker compose -f docker/docker-compose.yml up -d
 
       - name: Wait for database to be ready
         run: |
