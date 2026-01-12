@@ -29,6 +29,9 @@ jobs:
       - name: Start application
         run: docker compose -f docker/docker-compose.yml up -d
 
+      - name: Sleep for 30 seconds (wait for containers)
+        run: sleep 30s
+
       - name: Seed database
         run: docker compose -f docker/docker-compose.yml exec -T laravel-api php artisan migrate:fresh --seed
 
