@@ -30,7 +30,7 @@ jobs:
         run: docker compose -f docker/docker-compose.yml up -d
 
       - name: Seed database
-        run: docker compose -f path/to/docker-compose.yml exec -T laravel-api php artisan migrate:fresh --seed
+        run: docker compose -f docker/docker-compose.yml exec -T laravel-api php artisan migrate:fresh --seed
 
       - name: Wait for UI to be ready
         run: |
