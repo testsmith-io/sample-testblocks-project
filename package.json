@@ -6,7 +6,8 @@
     "test": "testblocks run tests/**/*.testblocks.json",
     "test:headed": "testblocks run tests/**/*.testblocks.json --headed",
     "test:html": "testblocks run tests/**/*.testblocks.json -r html -o reports",
-    "test:junit": "testblocks run tests/**/*.testblocks.json -r junit -o reports"
+    "test:junit": "testblocks run tests/**/*.testblocks.json -r junit -o reports",
+    "test:ci": "testblocks run tests/**/*.testblocks.json -r console,html,junit -o reports",
   },
   "devDependencies": {
     "@testsmith/testblocks": "0.8.4"
