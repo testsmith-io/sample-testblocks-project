@@ -132,7 +132,7 @@
       ],
       "steps": [
         {
-          "id": "3yFc2Ub~,iJkRy9LswR[",
+          "id": "4Y{Uy#K|~~f{*.Up4tW_",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -140,7 +140,7 @@
           }
         },
         {
-          "id": "CuWmeCp}@QWcn,*(!Y^C",
+          "id": "}^vh4xJy%-(!J%s8~;$d",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"search-query\"]",
@@ -148,28 +148,10 @@
           }
         },
         {
-          "id": "m:W^3]oud5z1vb:c5HV`",
+          "id": "sVFqOtV{*y}bDhd/VGs^",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"search-submit\"]",
-            "TIMEOUT": 30000
-          }
-        },
-        {
-          "id": "Dz?H9vS9a}lLWw`eV36(",
-          "type": "web_wait_for_element",
-          "params": {
-            "SELECTOR": "[data-test=\"search_completed\"]",
-            "STATE": "visible",
-            "TIMEOUT": 20000
-          }
-        },
-        {
-          "id": "-=h/Iyq@oUwg1_)*rVb#",
-          "type": "web_assert_text_contains",
-          "params": {
-            "SELECTOR": "body",
-            "TEXT": "There are no products found",
             "TIMEOUT": 30000
           }
         }

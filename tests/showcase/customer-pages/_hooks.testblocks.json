@@ -67,7 +67,7 @@
   ],
   "afterAll": [
     {
-      "id": "cleanup-1",
+      "id": "x!,Dc/6ux+aEu@A+(/#K",
       "type": "logic_log",
       "params": {
         "LEVEL": "info",
@@ -75,15 +75,15 @@
       }
     },
     {
-      "id": "cleanup-2",
+      "id": "UO?j!S6eCzn3c_Qv8lV!",
       "type": "web_click",
       "params": {
-        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "SELECTOR": "[data-test=\"nav-user-menu\"]",
         "TIMEOUT": 30000
       }
     },
     {
-      "id": "cleanup-3",
+      "id": "7l+$4+5?iK/jZYNg0S2b",
       "type": "web_click",
       "params": {
         "SELECTOR": "[data-test=\"nav-sign-out\"]",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "id": "cleanup-4",
+      "id": "fcI8zotr)ApzL4ZO%#?B",
       "type": "web_wait_for_element",
       "params": {
         "SELECTOR": "[data-test=\"nav-sign-in\"]",
@@ -100,7 +100,7 @@
       }
     },
     {
-      "id": "cleanup-5",
+      "id": "SymL6C#W%P@bUf*|8w^J",
       "type": "logic_log",
       "params": {
         "LEVEL": "info",

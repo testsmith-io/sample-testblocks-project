@@ -24,7 +24,7 @@
       ],
       "steps": [
         {
-          "id": "[Gqt%=+2]SMLuNS{ulQe",
+          "id": "_7Zj(Y2X+Et_]E|Q30vb",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -32,7 +32,7 @@
           }
         },
         {
-          "id": "Y]=0]Sdl2+pF46iQ_m|x",
+          "id": "j~_3lt{7fgXhmX4..q/=",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-sign-in\"]",
@@ -40,7 +40,7 @@
           }
         },
         {
-          "id": "]FD-rCk)@TekyZvKqEoL",
+          "id": "hrDFZ7077+uv:vrkV{iI",
           "type": "custom_performlogin",
           "params": {
             "EMAIL": "customer@practicesoftwaretesting.com",
@@ -48,11 +48,27 @@
           }
         },
         {
-          "id": "RB_ABhk][3})%8g)bYc|",
+          "id": "hyVA^#iHdUar,TO[L2.N",
           "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"page-title\"]",
             "TEXT": "My account",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "}5EDnPnW]xw^mn?W|JQA",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-user-menu\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "(|7Hj4aqdvSRCJ=q.Xm4",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-out\"]",
             "TIMEOUT": 30000
           }
         }
@@ -69,15 +85,23 @@
       ],
       "steps": [
         {
-          "id": "IFg!-FFyw`SeYNmvX7ZP",
+          "id": "ge+Vap3T5A{H-yjwBY#/",
           "type": "web_navigate",
           "params": {
-            "URL": "${baseUrl}/auth/login",
+            "URL": "${baseUrl}",
             "WAIT_UNTIL": "load"
           }
         },
         {
-          "id": "51mh%[bJqmEVw+]sgCi6",
+          "id": "/TRnsiu^+]u-NwuH9c?)",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-in\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "/3a2*zjjH,k2T=zBg`C`",
           "type": "custom_performlogin",
           "params": {
             "EMAIL": "customer3@practicesoftwaretesting.com",
@@ -85,7 +109,7 @@
           }
         },
         {
-          "id": "AdG@BeE3E{modN@[P$,w",
+          "id": "X3T5!!7qIQ+=Fnscp^n,",
           "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"password-error\"]",
@@ -107,15 +131,23 @@
       "softAssertions": true,
       "steps": [
         {
-          "id": "MW,y%d_j1gZG;}qoNPrz",
+          "id": "_(2,?@sw@KK^V4sR]-Q@",
           "type": "web_navigate",
           "params": {
-            "URL": "${baseUrl}/auth/login",
+            "URL": "${baseUrl}",
             "WAIT_UNTIL": "load"
           }
         },
         {
-          "id": "IS^udht@b9}WiW3I1tq[",
+          "id": "/yf(pq/u~-MNYN$hCe4V",
+          "type": "web_click",
+          "params": {
+            "SELECTOR": "[data-test=\"nav-sign-in\"]",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "Y,hB9h$mB1Eb{LBKD~Kj",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"login-submit\"]",
@@ -123,20 +155,20 @@
           }
         },
         {
-          "id": "d/G-z{]z+3|yqJa9tu/Y",
-          "type": "web_assert_text_equals",
+          "id": "~D3UT]|r?Im$iWESlhG8",
+          "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"email-error\"]",
-            "TEXT": "Email is required",
+            "TEXT": "E-mail is required.",
             "TIMEOUT": 30000
           }
         },
         {
-          "id": "4OtJBnf})q(R#MIV}8xK",
-          "type": "web_assert_text_equals",
+          "id": "$plxno*czp0d6H7G,6mN",
+          "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"password-error\"]",
-            "TEXT": "Password is required",
+            "TEXT": "Password is required.",
             "TIMEOUT": 30000
           }
         }
@@ -156,5 +188,6 @@
       "baseUrl",
       "credentials"
     ]
-  }
+  },
+  "afterEach": []
 }

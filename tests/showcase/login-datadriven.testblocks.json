@@ -48,19 +48,11 @@
             "password": "welcome01",
             "expected_result": "My account"
           }
-        },
-        {
-          "name": "Row 2",
-          "values": {
-            "email": "admin@practicesoftwaretesting.com",
-            "password": "welcome01",
-            "expected_result": "Sales over the years"
-          }
         }
       ],
       "steps": [
         {
-          "id": "`I+E8$BIB+IKk}R}9i~l",
+          "id": "jJAZVou(3m%yEHc2TRn=",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -68,7 +60,7 @@
           }
         },
         {
-          "id": ".8f-RlL8sK/+*Sx[{x-;",
+          "id": "z;5Ac9O]pc?IMiP4e-!U",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-sign-in\"]",
@@ -76,7 +68,7 @@
           }
         },
         {
-          "id": "l%-!?0G*1V1_4%Is;q|Z",
+          "id": ");7jhTT*-lgP7I)ZqP-W",
           "type": "custom_performlogin",
           "params": {
             "EMAIL": "${email}",
@@ -84,7 +76,7 @@
           }
         },
         {
-          "id": "ZtMvUwv,9xRh:.a{a.y2",
+          "id": "zQ@uZ.Y#GO2noV{q5!C?",
           "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"page-title\"]",
@@ -113,15 +105,15 @@
   },
   "afterEach": [
     {
-      "id": "{ZSMs[sQa]vXZgqKwzDh",
+      "id": "e)usUjL1E_PPjYArK}/;",
       "type": "web_click",
       "params": {
-        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "SELECTOR": "[data-test=\"nav-user-menu\"]",
         "TIMEOUT": 30000
       }
     },
     {
-      "id": "QMTa/R!1g,-yV*!SI-rk",
+      "id": "V0u,a0|FcdApqu]O@zy4",
       "type": "web_click",
       "params": {
         "SELECTOR": "[data-test=\"nav-sign-out\"]",

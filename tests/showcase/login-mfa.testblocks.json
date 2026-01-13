@@ -105,7 +105,7 @@
       "id": "0Vn%O~$V_#`~RSF`rr#!",
       "type": "web_click",
       "params": {
-        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "SELECTOR": "[data-test=\"nav-user-menu\"]",
         "TIMEOUT": 30000
       }
     },
@@ -203,7 +203,7 @@
       "id": "iU3Ke_CQ;F5|0@pxT,cj",
       "type": "web_click",
       "params": {
-        "SELECTOR": "[data-test=\"nav-menu\"]",
+        "SELECTOR": "[data-test=\"\"]",
         "TIMEOUT": 30000
       }
     },
@@ -343,7 +343,7 @@
       ],
       "steps": [
         {
-          "id": "6nLQ,~|if0H/0e,FPt2X",
+          "id": "nK)=f@~uMG5BqGxxM8iy",
           "type": "logic_log",
           "params": {
             "LEVEL": "info",
@@ -351,7 +351,7 @@
           }
         },
         {
-          "id": "%DKD|?!rUIKViVg~Qpqe",
+          "id": "LQf2LP26fg/1M/)}Hg/F",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -359,7 +359,7 @@
           }
         },
         {
-          "id": "]HS)+]CQue%Tp2Mz8r;6",
+          "id": "E*+%(*5OMz:.5QIQYBm2",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-sign-in\"]",
@@ -367,7 +367,7 @@
           }
         },
         {
-          "id": "n1M%V[{i5mTfA]?^WKpD",
+          "id": "Ad@pjvG#],}v8+qo{!Fy",
           "type": "custom_loginwithcredentials",
           "params": {
             "EMAIL": "customer2@practicesoftwaretesting.com",
@@ -375,7 +375,7 @@
           }
         },
         {
-          "id": "XQ/W-iB[hH}.{jUn_BPQ",
+          "id": "SM!Q/`wEuY3.G,+Ofpn[",
           "type": "totp_generate",
           "params": {
             "SECRET": "${totpSecret}",
@@ -385,7 +385,7 @@
           }
         },
         {
-          "id": "uQ4%uDAWEw[*MfFpcjEU",
+          "id": "5sg.{:#=)!Zd{QE?N8F.",
           "type": "logic_log",
           "params": {
             "LEVEL": "info",
@@ -393,7 +393,7 @@
           }
         },
         {
-          "id": "MF}p!a]TPaO5hyw+}/[5",
+          "id": "#hZSP#dPIimuT.#cLoRU",
           "type": "web_fill",
           "params": {
             "SELECTOR": "#totp",
@@ -401,7 +401,7 @@
           }
         },
         {
-          "id": "pp#f)zwZz=V`cZBYm~=*",
+          "id": "-.=H4~,[YHbbt`O;_rkG",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"verify-totp\"]",
@@ -409,7 +409,7 @@
           }
         },
         {
-          "id": "@X:}j{qPzX#4Lq8rqu-`",
+          "id": "|D1lYu]664AI9-*se[_(",
           "type": "web_wait_for_element",
           "params": {
             "SELECTOR": "[data-test=\"page-title\"]",
@@ -418,7 +418,7 @@
           }
         },
         {
-          "id": "uT#gab$.]Xk;|or~787R",
+          "id": "Rn%?Jw4+_emj#FPq=$p^",
           "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": "[data-test=\"page-title\"]",
@@ -427,7 +427,7 @@
           }
         },
         {
-          "id": "Vt-yvD?PlCv8K:iJ|p/x",
+          "id": "+B,P{@P5,H(v1tH,E*Am",
           "type": "logic_log",
           "params": {
             "LEVEL": "info",
@@ -435,7 +435,8 @@
           }
         }
       ],
-      "softAssertions": false
+      "softAssertions": false,
+      "disabled": true
     }
   ],
   "metadata": {

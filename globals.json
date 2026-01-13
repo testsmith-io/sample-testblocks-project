@@ -2,7 +2,7 @@
   "variables": {
     "baseUrl": {
       "type": "string",
-      "default": "https://practicesoftwaretesting.com",
+      "default": "https://v4.practicesoftwaretesting.com",
       "description": "Base URL for the web application"
     },
     "apiBaseUrl": {

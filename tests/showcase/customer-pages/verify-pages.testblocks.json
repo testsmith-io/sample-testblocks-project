@@ -22,15 +22,15 @@
       "softAssertions": true,
       "steps": [
         {
-          "id": "(+W2[{uTTLyCB);toSYd",
+          "id": ",+^HbQ%W=q*U@0wsP*?v",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "SELECTOR": "[data-test=\"nav-user-menu\"]",
             "TIMEOUT": 30000
           }
         },
         {
-          "id": "tTg;DbQtm5NPv6xP|/QB",
+          "id": "e]VB_lp@?Gn1Mi%TC4D]",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-my-profile\"]",
@@ -38,7 +38,7 @@
           }
         },
         {
-          "id": "$/Kd6VqdaQQL6yug*-U)",
+          "id": "VEddT{MdnBB7AWM=Zigk",
           "type": "web_wait_for_element",
           "params": {
             "SELECTOR": "h2",
@@ -47,16 +47,16 @@
           }
         },
         {
-          "id": "4;9~F43KOL^#/=-b2W8F",
+          "id": "`gq!UUy8y=#ig9-nN}K~",
           "type": "web_assert_text_equals",
           "params": {
-            "SELECTOR": "[data-test=\"page-title\"]",
+            "SELECTOR": "(//h2)[1]",
             "TEXT": "Profile",
             "TIMEOUT": 30000
           }
         },
         {
-          "id": "q2C_N%*@16y7x|e-w!]k",
+          "id": "xR-POs6ZG!KfaIGmFwVk",
           "type": "web_assert_visible",
           "params": {
             "SELECTOR": "[data-test=\"first-name\"]",
@@ -64,7 +64,7 @@
           }
         },
         {
-          "id": "+VZcLsL7dL}Hkoc$vg]w",
+          "id": "B=Egl!VvE+.v?++.6jP7",
           "type": "web_assert_visible",
           "params": {
             "SELECTOR": "[data-test=\"last-name\"]",
@@ -72,7 +72,7 @@
           }
         },
         {
-          "id": "~J]IaA-VU^tQA_;,Y`8M",
+          "id": "A*wB%6SA7T|*9?#D1}yt",
           "type": "web_assert_visible",
           "params": {
             "SELECTOR": "[data-test=\"email\"]",
@@ -92,15 +92,15 @@
       ],
       "steps": [
         {
-          "id": "N}r$(N:em$KSmUyDE*Ct",
+          "id": "f;pVr`WtmO6~RpAof${4",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "SELECTOR": "[data-test=\"nav-user-menu\"]",
             "TIMEOUT": 30000
           }
         },
         {
-          "id": "05WoYRxB,b(6z;FOW#SC",
+          "id": "t,8]gs^ynYLrn.v1(IXc",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-my-favorites\"]",
@@ -108,16 +108,7 @@
           }
         },
         {
-          "id": "#3*W|.,f*`y-+NNE@uP%",
-          "type": "web_wait_for_element",
-          "params": {
-            "SELECTOR": "[data-test=\"page-title\"]",
-            "STATE": "visible",
-            "TIMEOUT": 30000
-          }
-        },
-        {
-          "id": "`^Rj0I$T[}W-zvcu.H{J",
+          "id": "YZ}0-gNxZugNI_ZRLUni",
           "type": "web_assert_text_equals",
           "params": {
             "SELECTOR": "[data-test=\"page-title\"]",
@@ -142,7 +133,7 @@
           "id": "P(7T+[+P=7.C;RQR0*S$",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "SELECTOR": "[data-test=\"nav-user-menu\"]",
             "TIMEOUT": 30000
           }
         },
@@ -189,7 +180,7 @@
           "id": "Bnt02`C-^eGjP;Z%Uu{i",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-menu\"]",
+            "SELECTOR": "[data-test=\"nav-user-menu\"]",
             "TIMEOUT": 30000
           }
         },

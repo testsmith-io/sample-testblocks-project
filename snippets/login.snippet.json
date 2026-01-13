@@ -50,7 +50,7 @@
       "id": "login-step-5",
       "type": "web_wait_for_selector",
       "params": {
-        "SELECTOR": "[data-test=nav-menu]",
+        "SELECTOR": "[data-test=nav-user-menu]",
         "TIMEOUT": 10000
       }
     }

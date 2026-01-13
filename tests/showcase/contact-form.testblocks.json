@@ -120,7 +120,7 @@
       ],
       "steps": [
         {
-          "id": "}^f7KR3Z7s,m%])%35Em",
+          "id": "--Q=2`W~Rug~QmUy#d[+",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -128,7 +128,7 @@
           }
         },
         {
-          "id": "HK!{YAS0]8`~pE1A5]}c",
+          "id": "1ng,fl:}t^YPe@,87TVT",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-contact\"]",
@@ -136,7 +136,7 @@
           }
         },
         {
-          "id": "+S4fPy:GaMJxt37?G6)J",
+          "id": "]/Fv;bJx]I(M8AMU7El}",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "firstName",
@@ -144,7 +144,7 @@
           }
         },
         {
-          "id": "g{Oxw5%+iP{|E:d[L3C-",
+          "id": "RuMPHojm/R@u0l|e.2SW",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "lastName",
@@ -152,7 +152,7 @@
           }
         },
         {
-          "id": "/b4nKrDc2mq+gH%Sua=N",
+          "id": "{Z)yB,(B7VMHa#P~-:sy",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "email",
@@ -160,15 +160,53 @@
           }
         },
         {
-          "id": "4jgWa@=t-~=/$@7!E,WL",
-          "type": "procedure_call",
+          "id": "dS0#tHUP5_eP7kp!Bt*5",
+          "type": "web_fill",
           "params": {
-            "NAME": "fillContactForm",
-            "ARGS": "{\"fname\": \"${firstName}\", \"lname\": \"${lastName}\", \"emailAddr\": \"${email}\", \"subject\": \"return\", \"msg\": \"This is a pretty long message, what else should I write here?\"}"
+            "SELECTOR": "[data-test=\"first-name\"]",
+            "VALUE": "${firstName}",
+            "TIMEOUT": 30000
           }
         },
         {
-          "id": "xWO;a-5/V8yQ8hnNt_%U",
+          "id": "$|-)@-uf}/o-757L8?W#",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"last-name\"]",
+            "VALUE": "${lastName}",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "N$8d_)$_omP+iV?Oe4X]",
+          "type": "web_fill",
+          "params": {
+            "SELECTOR": "[data-test=\"email\"]",
+            "VALUE": "${email}",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "2brsM?nS1k0)s@VdfmHS",
+          "type": "web_select",
+          "params": {
+            "SELECTOR": "[data-test=\"subject\"]",
+            "VALUE": "return",
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "em#a$)3zR,dWs2x9W7-3",
+          "type": "web_type",
+          "params": {
+            "SELECTOR": "[data-test=\"message\"]",
+            "TEXT": "This is the message I like to send to the webshop.",
+            "DELAY": 50,
+            "TIMEOUT": 30000
+          }
+        },
+        {
+          "id": "*X|LUNPLg-U^h(~7Mh({",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"contact-submit\"]",
@@ -176,7 +214,7 @@
           }
         },
         {
-          "id": "+7fkDNGx7qlc{H9Qyo|h",
+          "id": "EX3^qElf(7{VV?sPd;Wl",
           "type": "web_assert_text_equals",
           "params": {
             "SELECTOR": ".alert-success",
@@ -269,7 +307,7 @@
       ],
       "steps": [
         {
-          "id": "04GxZyB`=1c]a2T4^F=)",
+          "id": "[pi_D..6:c1D(bqdaPgZ",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -277,7 +315,7 @@
           }
         },
         {
-          "id": "b5Un~.$u3Y=x({GnbORy",
+          "id": "V{JQEBp7q4Zx+t?N+A}@",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"nav-contact\"]",
@@ -285,14 +323,14 @@
           }
         },
         {
-          "id": "F6wWjOU%.Vn4,$_AwT21",
+          "id": "e%J:oS,]$WyHFP)n@-6J",
           "type": "faker_store_person",
           "params": {
             "VARIABLE": "person"
           }
         },
         {
-          "id": "}aRwu_BsH3;TU};2.O;8",
+          "id": "uo.BuvC^T,4OQ3N5tk..",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"first-name\"]",
@@ -300,7 +338,7 @@
           }
         },
         {
-          "id": "x?Q:$DBNlAQr{h*3}?wB",
+          "id": "bV{J|@Up*mQ%q#jnkc5^",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"last-name\"]",
@@ -308,7 +346,7 @@
           }
         },
         {
-          "id": "%jUr-/tb`!L!u05y/5VA",
+          "id": "tA92dat/3N$Drpis,QQ)",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"email\"]",
@@ -316,7 +354,7 @@
           }
         },
         {
-          "id": "S7a.e%_ZCEj~yQW=](2v",
+          "id": "B9Rq1[IGpN9g/5|j,O!4",
           "type": "web_select",
           "params": {
             "SELECTOR": "[data-test=\"subject\"]",
@@ -324,7 +362,7 @@
           }
         },
         {
-          "id": "8rJVlO%payScIA2q7sJI",
+          "id": "=nK$zI8mg,R-/wXSj%=b",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "messageText",
@@ -332,7 +370,7 @@
           }
         },
         {
-          "id": "1NLe}8GCU[dH+m^CtESw",
+          "id": "%u|Qu[5453:A6J*(_v{j",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"message\"]",
@@ -340,7 +378,7 @@
           }
         },
         {
-          "id": "j-i8+*L]rbkYoGc87M7c",
+          "id": "I0aJa2ZBs`5hPchJT#X3",
           "type": "web_click",
           "params": {
             "SELECTOR": "[data-test=\"contact-submit\"]",
@@ -348,7 +386,7 @@
           }
         },
         {
-          "id": "WImh2kpJp:Q0JA:dQWbd",
+          "id": "64SW0yq}9$=[a1lBUx|c",
           "type": "web_wait_for_element",
           "params": {
             "SELECTOR": ".alert-success",
