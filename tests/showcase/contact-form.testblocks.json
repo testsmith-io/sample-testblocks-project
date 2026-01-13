@@ -307,7 +307,7 @@
       ],
       "steps": [
         {
-          "id": "[pi_D..6:c1D(bqdaPgZ",
+          "id": "nk*tX=5)E)4%0.4o^SKL",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -315,22 +315,21 @@
           }
         },
         {
-          "id": "V{JQEBp7q4Zx+t?N+A}@",
+          "id": "(+P=:!ISwJkQODu/le^?",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-contact\"]",
-            "TIMEOUT": 30000
+            "SELECTOR": "[data-test=\"nav-contact\"]"
           }
         },
         {
-          "id": "e%J:oS,]$WyHFP)n@-6J",
+          "id": "WQ_n*QdB#0S_=03?9*lv",
           "type": "faker_store_person",
           "params": {
             "VARIABLE": "person"
           }
         },
         {
-          "id": "uo.BuvC^T,4OQ3N5tk..",
+          "id": "(a+IwO2Dg6$/9wd!9i[K",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"first-name\"]",
@@ -338,7 +337,7 @@
           }
         },
         {
-          "id": "bV{J|@Up*mQ%q#jnkc5^",
+          "id": "Qd#1H:c2ckW]tv1q~CD~",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"last-name\"]",
@@ -346,7 +345,7 @@
           }
         },
         {
-          "id": "tA92dat/3N$Drpis,QQ)",
+          "id": "s8(#;|Edl_S%(f:X+T_a",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"email\"]",
@@ -354,7 +353,7 @@
           }
         },
         {
-          "id": "B9Rq1[IGpN9g/5|j,O!4",
+          "id": "|!.YbSyTOHqE3t7H?.AG",
           "type": "web_select",
           "params": {
             "SELECTOR": "[data-test=\"subject\"]",
@@ -362,7 +361,7 @@
           }
         },
         {
-          "id": "=nK$zI8mg,R-/wXSj%=b",
+          "id": "UfRv==7tXV*8WuT(1N5C",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "messageText",
@@ -370,28 +369,27 @@
           }
         },
         {
-          "id": "%u|Qu[5453:A6J*(_v{j",
-          "type": "web_fill",
+          "id": ".v8^NfxlWHgZf0SI,F*F",
+          "type": "web_type",
           "params": {
             "SELECTOR": "[data-test=\"message\"]",
-            "VALUE": "${messageText}"
+            "TEXT": "${messageText}",
+            "DELAY": 50
           }
         },
         {
-          "id": "I0aJa2ZBs`5hPchJT#X3",
+          "id": "!Aqv~H.b+s1h6yQ6L(J,",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"contact-submit\"]",
-            "TIMEOUT": 30000
+            "SELECTOR": "[data-test=\"contact-submit\"]"
           }
         },
         {
-          "id": "64SW0yq}9$=[a1lBUx|c",
+          "id": "_Y,OBpM?s!^0]3fH[;gC",
           "type": "web_wait_for_element",
           "params": {
             "SELECTOR": ".alert-success",
-            "STATE": "visible",
-            "TIMEOUT": 30000
+            "STATE": "visible"
           }
         }
       ],

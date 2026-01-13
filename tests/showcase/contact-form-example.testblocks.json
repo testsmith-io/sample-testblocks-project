@@ -15,7 +15,7 @@
       ],
       "steps": [
         {
-          "id": "DFn:wcsUtif+bC|-CbN;",
+          "id": "w/3bNFUPKCll|$4GeJ7.",
           "type": "web_navigate",
           "params": {
             "URL": "${baseUrl}",
@@ -23,15 +23,14 @@
           }
         },
         {
-          "id": "xIV6LA6*$h9b=9NCo0{9",
+          "id": "(9C|oX3G!]f~4C8cB@`1",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"nav-contact\"]",
-            "TIMEOUT": 30000
+            "SELECTOR": "[data-test=\"nav-contact\"]"
           }
         },
         {
-          "id": "xTL*Mo4ZRU`Q=K{Fe_7S",
+          "id": "|eyVaHn.1Y+xX38!Pv7G",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "firstName",
@@ -39,7 +38,7 @@
           }
         },
         {
-          "id": "M3Z_XFA)mzf=hB(Up}Me",
+          "id": ",fl)nIO?l1er)#|xutg:",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"first-name\"]",
@@ -47,7 +46,7 @@
           }
         },
         {
-          "id": "eeK3-mAhL)uM{a`G_mG-",
+          "id": "qc~)_%y~gfB;PCRtiN[#",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "lastName",
@@ -55,7 +54,7 @@
           }
         },
         {
-          "id": "#=3~y8!c$f]Uf(*l2VNT",
+          "id": "P$4vAQKB{sf87#..hxMK",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"last-name\"]",
@@ -63,7 +62,7 @@
           }
         },
         {
-          "id": "G7ni^A(LTTxQjbOoq@I;",
+          "id": "rs$`HMSpF0jk?f.-,g22",
           "type": "faker_store_value",
           "params": {
             "VARIABLE": "email",
@@ -71,7 +70,7 @@
           }
         },
         {
-          "id": "Y?t7${%JrSz0*cMo$%+b",
+          "id": ";ZzsUf:j-!SO/KL}hKRG",
           "type": "web_fill",
           "params": {
             "SELECTOR": "[data-test=\"email\"]",
@@ -79,7 +78,7 @@
           }
         },
         {
-          "id": "qBsSu,ZyE[$xw,Jj4}Cf",
+          "id": "4-zCBl-lIzyAMXw4]ve(",
           "type": "web_select",
           "params": {
             "SELECTOR": "[data-test=\"subject\"]",
@@ -87,15 +86,16 @@
           }
         },
         {
-          "id": "eG0T3VksNbd)EEvP2{Bd",
-          "type": "web_fill",
+          "id": ")Ceqxveu+[0OhvztlK?2",
+          "type": "web_type",
           "params": {
             "SELECTOR": "[data-test=\"message\"]",
-            "VALUE": "This is a message that should contain enough characters"
+            "TEXT": "This is a message that should contain enough characters",
+            "DELAY": 50
           }
         },
         {
-          "id": "gWtDiF_SKqRHOM[|I/jG",
+          "id": "0z*gt.58K7LX`V_o__rz",
           "type": "logic_log",
           "params": {
             "LEVEL": "info",
@@ -103,33 +103,30 @@
           }
         },
         {
-          "id": "p}q88z@zADK2Lz.q(_%k",
+          "id": "?aVdP__q3u8OLAI$}b2o",
           "type": "web_click",
           "params": {
-            "SELECTOR": "[data-test=\"contact-submit\"]",
-            "TIMEOUT": 30000
+            "SELECTOR": "[data-test=\"contact-submit\"]"
           }
         },
         {
-          "id": "rnuUB1RfwpX|}s)Y+_Y%",
+          "id": "KI`;zg}c8;v2h(UKApVR",
           "type": "web_wait_for_element",
           "params": {
             "SELECTOR": ".alert-success",
-            "STATE": "visible",
-            "TIMEOUT": 30000
+            "STATE": "visible"
           }
         },
         {
-          "id": ";9},WbX?i!]/mdaEOCkn",
+          "id": "e,q,(m^p`^$F$S~RYdf_",
           "type": "web_assert_text_contains",
           "params": {
             "SELECTOR": ".alert-success",
-            "TEXT": "Thanks for your message! We will contact you shortly.",
-            "TIMEOUT": 30000
+            "TEXT": "Thanks for your message! We will contact you shortly."
           }
         },
         {
-          "id": "BC5?`,c5W))HW(v~;{J|",
+          "id": "~S+Tj$nGBx/M5Xl1/JaF",
           "type": "logic_log",
           "params": {
             "LEVEL": "info",
